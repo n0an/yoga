@@ -488,7 +488,7 @@ static void YGRemoveAllChildren(const YGNodeRef node) {
   YGNodeRemoveAllChildren(node);
 }
 
-static inline CGSize YGAlignPixelSize(CGSize s) {
+static inline CGSize YGPixelAlignSize(CGSize s) {
     CGFloat scale = YGScaleFactor();
     return (CGSize) { .width = ceil(s.width * scale) / scale, .height = ceil(s.height * scale) / scale };
 }
@@ -549,12 +549,12 @@ static void YGApplyLayoutToViewHierarchy(UIView* view, BOOL preserveOrigin) {
 
   view.frame = (CGRect) {
     .origin = frame.origin,
-    .size = YGAlignPixelSize(frame.size)
+    .size = YGPixelAlignSize(frame.size)
   };
 #else
   view.bounds = (CGRect) {
     .origin = view.bounds.origin,
-    .size = YGAlignPixelSize(frame.size)
+    .size = YGPixelAlignSize(frame.size)
   };
 
   view.center = (CGPoint) {
