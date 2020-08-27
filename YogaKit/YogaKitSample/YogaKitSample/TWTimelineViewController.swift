@@ -9,7 +9,7 @@
 import UIKit
 import YogaKit
 
-class TWTimelineViewController : UIViewController {
+class TWTimelineViewController: UIViewController {
 
     private var tableView: UITableView!
     private var timelineCell: TWTimelineCell!
@@ -57,7 +57,7 @@ class TWTimelineViewController : UIViewController {
     }
 }
 
-extension TWTimelineViewController : UITableViewDataSource, UITableViewDelegate {
+extension TWTimelineViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
@@ -76,7 +76,7 @@ extension TWTimelineViewController : UITableViewDataSource, UITableViewDelegate 
     }
 }
 
-class TWTimelineCell : UITableViewCell {
+class TWTimelineCell: UITableViewCell {
     var headimgView: UIImageView!
     var nameView: UILabel!
     var dateView: UILabel!

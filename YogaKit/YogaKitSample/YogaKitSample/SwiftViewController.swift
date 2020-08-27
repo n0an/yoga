@@ -25,7 +25,7 @@ final class SwiftViewController: UIViewController, IGListAdapterDataSource {
     }()
     let collectionView = IGListCollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
 
-    //MARK: UIViewController
+    // MARK: UIViewController
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,8 +40,7 @@ final class SwiftViewController: UIViewController, IGListAdapterDataSource {
         collectionView.frame = view.bounds
     }
 
-
-    //MARK: IGListAdapterDataSource
+    // MARK: IGListAdapterDataSource
 
     func objects(for listAdapter: IGListAdapter) -> [IGListDiffable] {
         return ["Dustin" as IGListDiffable, "Ryan" as IGListDiffable]
