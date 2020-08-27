@@ -41,7 +41,7 @@ final class ExamplesViewController: UIViewController, ListAdapterDataSource, Lis
     // Update this to array to create more examples.
     private let models: [ExampleModel] = [ExampleModel(title: "Basic Layout", controllerClass: BasicViewController.self),
                                           ExampleModel(title: "Exclude Views in Layout", controllerClass: LayoutInclusionViewController.self),
-                                          ExampleModel(title: "AutoLayout Mixed", controllerClass: AutoLayoutMixedViewController.self)]
+                                          ExampleModel(title: "Twitter timeline Layout", controllerClass: TWTimelineViewController.self)]
 
     //MARK: UIViewController
 
