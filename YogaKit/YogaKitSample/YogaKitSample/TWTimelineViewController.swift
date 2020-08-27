@@ -19,7 +19,7 @@ class TWTimelineViewController : UIViewController {
 
         view.backgroundColor = .lightGray
 
-        view.configureLayout { (layout) in
+        view.yoga.configureLayout { (layout) in
             layout.isEnabled = true
         }
 
@@ -29,7 +29,7 @@ class TWTimelineViewController : UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         view.addSubview(tableView)
-        tableView.configureLayout { (layout) in
+        tableView.yoga.configureLayout { (layout) in
             layout.isEnabled = true
             layout.width = 100%
             layout.height = 100%
@@ -90,7 +90,7 @@ class TWTimelineCell : UITableViewCell {
         backgroundView = UIView()
         backgroundView?.backgroundColor = .white
 
-        contentView.configureLayout { (layout) in
+        contentView.yoga.configureLayout { (layout) in
             layout.isEnabled = true
             layout.flexDirection = .column
             layout.paddingLeft = 74
@@ -103,7 +103,7 @@ class TWTimelineCell : UITableViewCell {
         headimgView.contentMode = .scaleAspectFill
         headimgView.layer.cornerRadius = 49 * 0.5
         contentView.addSubview(headimgView)
-        headimgView.configureLayout { (layout) in
+        headimgView.yoga.configureLayout { (layout) in
             layout.isEnabled = true
             layout.position = .absolute
             layout.top = 10
@@ -117,7 +117,7 @@ class TWTimelineCell : UITableViewCell {
         nameView.textColor = .orange
         nameView.text = "Emil Sjölander"
         contentView.addSubview(nameView)
-        nameView.configureLayout { (layout) in
+        nameView.yoga.configureLayout { (layout) in
             layout.isEnabled = true
             layout.marginTop = 10
             layout.height = 20
@@ -128,7 +128,7 @@ class TWTimelineCell : UITableViewCell {
         dateView.textColor = .lightGray
         dateView.text = "POSTED ON DEC 7, 2016"
         contentView.addSubview(dateView)
-        dateView.configureLayout { (layout) in
+        dateView.yoga.configureLayout { (layout) in
             layout.isEnabled = true
             layout.marginTop = 2
         }
@@ -150,7 +150,7 @@ class TWTimelineCell : UITableViewCell {
                         We chose to implement Yoga in C to better optimize its performance, and we saw a 33 percent improvement to layout times on Android compared with the previous Java implementation. C also gives us the ability to easily integrate Yoga into more platforms and frameworks. To date, Yoga has bindings for Java (Android), Objective-C (UIKit), and C# (.NET), and is being used in projects such as React Native, Components for Android, and Oculus. We are also in the process of migrating some views in Instagram to Yoga via the UIKit bindings, and we’re integrating Yoga into ComponentKit as well.
                         """
         contentView.addSubview(postView)
-        postView.configureLayout { (layout) in
+        postView.yoga.configureLayout { (layout) in
             layout.isEnabled = true
             layout.marginTop = 5
         }
@@ -160,14 +160,14 @@ class TWTimelineCell : UITableViewCell {
         tagsView.textColor = .blue
         tagsView.text = "#yoga #iOS #twiiter #flexbox #YogaKit #facebook #Github"
         contentView.addSubview(tagsView)
-        tagsView.configureLayout { (layout) in
+        tagsView.yoga.configureLayout { (layout) in
             layout.isEnabled = true
             layout.marginTop = 5
         }
 
         bottomView = UIView()
         contentView.addSubview(bottomView)
-        bottomView.configureLayout { (layout) in
+        bottomView.yoga.configureLayout { (layout) in
             layout.isEnabled = true
             layout.flexDirection = .row
             layout.justifyContent = .spaceBetween
@@ -179,7 +179,7 @@ class TWTimelineCell : UITableViewCell {
         for i in 0 ..< 3 {
             let v = UIImageView(image: UIImage(named: names[i]))
             bottomView.addSubview(v)
-            v.configureLayout { (layout) in
+            v.yoga.configureLayout { (layout) in
                 layout.isEnabled = true
                 layout.width = 19
                 layout.height = 19

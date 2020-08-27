@@ -13,7 +13,7 @@ final class BasicViewController: UIViewController {
 
         let root = self.view!
         root.backgroundColor = .white
-        root.configureLayout { (layout) in
+        root.yoga.configureLayout { (layout) in
             layout.isEnabled = true
             layout.alignItems = .center
             layout.justifyContent = .center
@@ -21,7 +21,7 @@ final class BasicViewController: UIViewController {
 
         let child1 = UIView()
         child1.backgroundColor = .blue
-        child1.configureLayout { (layout) in
+        child1.yoga.configureLayout { (layout) in
             layout.isEnabled = true
             layout.width = 100
             layout.height = 10
@@ -31,7 +31,7 @@ final class BasicViewController: UIViewController {
 
         let child2 = UIView()
         child2.backgroundColor = .green
-        child2.configureLayout { (layout) in
+        child2.yoga.configureLayout { (layout) in
             layout.isEnabled = true
             layout.alignSelf = .flexEnd
             layout.width = 200
@@ -41,7 +41,7 @@ final class BasicViewController: UIViewController {
 
         let child3 = UIView()
         child3.backgroundColor = .yellow
-        child3.configureLayout { (layout) in
+        child3.yoga.configureLayout { (layout) in
             layout.isEnabled = true
             layout.alignSelf = .flexStart
             layout.width = 100

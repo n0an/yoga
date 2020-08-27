@@ -20,7 +20,7 @@
 
     UIView *root = self.view;
     root.backgroundColor = UIColor.whiteColor;
-    [root configureLayoutWithBlock:^(YGLayout * _Nonnull layout) {
+    [root.yoga configureLayoutWithBlock:^(YGLayout * _Nonnull layout) {
         layout.isEnabled = YES;
         layout.alignItems = YGAlignCenter;
         layout.justifyContent = YGJustifyCenter;
@@ -28,7 +28,7 @@
 
     UIView *child1 = [[UIView alloc] init];
     child1.backgroundColor = UIColor.blueColor;
-    [child1 configureLayoutWithBlock:^(YGLayout * _Nonnull layout) {
+    [child1.yoga configureLayoutWithBlock:^(YGLayout * _Nonnull layout) {
         layout.isEnabled = YES;
         layout.width = YGPointValue(100);
         layout.height = YGPointValue(10);
@@ -38,7 +38,7 @@
 
     UIView *child2 = [[UIView alloc] init];
     child2.backgroundColor = UIColor.greenColor;
-    [child2 configureLayoutWithBlock:^(YGLayout * _Nonnull layout) {
+    [child2.yoga configureLayoutWithBlock:^(YGLayout * _Nonnull layout) {
         layout.isEnabled = YES;
         layout.alignSelf = YGAlignFlexEnd;
         layout.width = YGPointValue(200);
@@ -48,7 +48,7 @@
 
     UIView *child3 = [[UIView alloc] init];
     child3.backgroundColor = UIColor.yellowColor;
-    [child3 configureLayoutWithBlock:^(YGLayout * _Nonnull layout) {
+    [child3.yoga configureLayoutWithBlock:^(YGLayout * _Nonnull layout) {
         layout.isEnabled = YES;
         layout.alignSelf = YGAlignFlexStart;
         layout.width = YGPointValue(100);

@@ -371,6 +371,12 @@ YG_PROPERTY(CGFloat, aspectRatio, AspectRatio)
   };
 }
 
+- (void)configureLayoutWithBlock:(YGLayoutConfigurationBlock)block {
+  if (block) {
+    block(self);
+  }
+}
+
 #pragma mark - Private
 
 static YGSize YGMeasureView(

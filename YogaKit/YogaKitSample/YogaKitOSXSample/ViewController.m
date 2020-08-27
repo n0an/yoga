@@ -17,7 +17,7 @@
     NSView *root = self.view;
     root.wantsLayer = YES;
     root.layer.backgroundColor = NSColor.whiteColor.CGColor;
-    [root configureLayoutWithBlock:^(YGLayout * _Nonnull layout) {
+    [root.yoga configureLayoutWithBlock:^(YGLayout * _Nonnull layout) {
         layout.isEnabled = YES;
         layout.alignItems = YGAlignCenter;
         layout.justifyContent = YGJustifyCenter;
@@ -26,7 +26,7 @@
     NSView *child1 = [[NSView alloc] init];
     child1.wantsLayer = YES;
     child1.layer.backgroundColor = NSColor.blueColor.CGColor;
-    [child1 configureLayoutWithBlock:^(YGLayout * _Nonnull layout) {
+    [child1.yoga configureLayoutWithBlock:^(YGLayout * _Nonnull layout) {
         layout.isEnabled = YES;
         layout.width = YGPointValue(100);
         layout.height = YGPointValue(10);
@@ -37,7 +37,7 @@
     NSView *child2 = [[NSView alloc] init];
     child2.wantsLayer = YES;
     child2.layer.backgroundColor = NSColor.greenColor.CGColor;
-    [child2 configureLayoutWithBlock:^(YGLayout * _Nonnull layout) {
+    [child2.yoga configureLayoutWithBlock:^(YGLayout * _Nonnull layout) {
         layout.isEnabled = YES;
         layout.alignSelf = YGAlignFlexEnd;
         layout.width = YGPointValue(200);
@@ -48,7 +48,7 @@
     NSView *child3 = [[NSView alloc] init];
     child3.wantsLayer = YES;
     child3.layer.backgroundColor = NSColor.yellowColor.CGColor;
-    [child3 configureLayoutWithBlock:^(YGLayout * _Nonnull layout) {
+    [child3.yoga configureLayoutWithBlock:^(YGLayout * _Nonnull layout) {
         layout.isEnabled = YES;
         layout.alignSelf = YGAlignFlexStart;
         layout.width = YGPointValue(100);
