@@ -26,7 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
  YGLayout, it's more performant to use this method, which uses a single
  objc_msgSend call.
  */
-- (void)configureLayoutWithBlock:(YGLayoutConfigurationBlock)block
+- (void)configureLayoutWithBlock:(NS_NOESCAPE YGLayoutConfigurationBlock)block
     NS_SWIFT_NAME(configureLayout(block:));
 
 @end

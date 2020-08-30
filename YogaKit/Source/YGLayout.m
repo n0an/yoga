@@ -371,7 +371,7 @@ YG_PROPERTY(CGFloat, aspectRatio, AspectRatio)
   };
 }
 
-- (void)configureLayoutWithBlock:(YGLayoutConfigurationBlock)block {
+- (void)configureLayoutWithBlock:(NS_NOESCAPE YGLayoutConfigurationBlock)block {
   if (block) {
     block(self);
   }
