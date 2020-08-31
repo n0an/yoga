@@ -29,7 +29,9 @@ static const void* kYGYogaAssociatedKey = &kYGYogaAssociatedKey;
 }
 
 - (void)configureLayoutWithBlock:(NS_NOESCAPE YGLayoutConfigurationBlock)block {
-  [self.yoga configureLayoutWithBlock:block];
+  if (block) {
+    [self.yoga configureLayoutWithBlock:block];
+  }
 }
 
 @end
@@ -112,37 +114,37 @@ static void YogaSwizzleInstanceMethod(Class cls, SEL originalSelector, SEL swizz
 #endif
 
 - (void)_yoga_applyLayout {
-    if (self.isYogaEnabled && self.yoga.isEnabled) {
-        CGSize size = self.bounds.size;
-        CGSize prev = self._yoga_boundsSize;
-        if (!CGSizeEqualToSize(size, prev)) {
-            self._yoga_boundsSize = size;
-            [self.yoga applyLayoutPreservingOrigin:YES];
-        }
+  if (self.isYogaEnabled && self.yoga.isEnabled) {
+    CGSize size = self.bounds.size;
+    CGSize prev = self._yoga_boundsSize;
+    if (!CGSizeEqualToSize(size, prev)) {
+      self._yoga_boundsSize = size;
+        [self.yoga applyLayoutPreservingOrigin:YES];
     }
+  }
 }
 
 @end
 
 
 static void YogaSwizzleInstanceMethod(Class cls, SEL originalSelector, SEL swizzledSelector) {
-    if (!cls || !originalSelector || !swizzledSelector) {
-        return;
-    }
+  if (!cls || !originalSelector || !swizzledSelector) {
+    return;
+  }
 
-    Method originalMethod = class_getInstanceMethod(cls, originalSelector);
-    Method swizzledMethod = class_getInstanceMethod(cls, swizzledSelector);
-    if (!originalMethod || !swizzledMethod) {
-        return;
-    }
+  Method originalMethod = class_getInstanceMethod(cls, originalSelector);
+  Method swizzledMethod = class_getInstanceMethod(cls, swizzledSelector);
+  if (!originalMethod || !swizzledMethod) {
+    return;
+  }
 
-    IMP swizzledIMP = method_getImplementation(swizzledMethod);
-    if (class_addMethod(cls, originalSelector, swizzledIMP, method_getTypeEncoding(swizzledMethod))) {
-        class_replaceMethod(cls,
-                            swizzledSelector,
-                            method_getImplementation(originalMethod),
-                            method_getTypeEncoding(originalMethod));
-    } else {
-        method_exchangeImplementations(originalMethod, swizzledMethod);
-    }
+  IMP swizzledIMP = method_getImplementation(swizzledMethod);
+  if (class_addMethod(cls, originalSelector, swizzledIMP, method_getTypeEncoding(swizzledMethod))) {
+    class_replaceMethod(cls,
+                        swizzledSelector,
+                        method_getImplementation(originalMethod),
+                        method_getTypeEncoding(originalMethod));
+  } else {
+    method_exchangeImplementations(originalMethod, swizzledMethod);
+  }
 }
