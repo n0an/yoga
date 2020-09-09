@@ -70,7 +70,7 @@ extension TWTimelineViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let size = timelineCell.contentView.yoga.calculateLayout(with: CGSize(width: tableView.bounds.width, height: .nan))
+        let size = timelineCell.contentView.yoga.calculateLayout(with: CGSize(width: tableView.bounds.width, height: CGFloat(YGUndefined)))
 
         return size.height
     }
