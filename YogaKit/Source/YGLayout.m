@@ -522,10 +522,15 @@ static void YGApplyLayoutToViewHierarchy(UIView* view, BOOL preserveOrigin) {
 
   YGNodeRef node = yoga.node;
     
-  const CGPoint topLeft = (view.superview.isYogaEnabled && view.superview.yoga.isEnabled) ? (CGPoint) {
-      .x = YGNodeLayoutGetLeft(node),
-      .y = YGNodeLayoutGetTop(node)
-  } : CGPointZero;
+//  const CGPoint topLeft = (view.superview.isYogaEnabled && view.superview.yoga.isEnabled) ? (CGPoint) {
+//      .x = YGNodeLayoutGetLeft(node),
+//      .y = YGNodeLayoutGetTop(node)
+//  } : CGPointZero;
+
+    const CGPoint topLeft = {
+        YGNodeLayoutGetLeft(node),
+        YGNodeLayoutGetTop(node),
+    };
 
   const CGPoint bottomRight = {
       .x = (CGFloat)(topLeft.x + YGNodeLayoutGetWidth(node)),
