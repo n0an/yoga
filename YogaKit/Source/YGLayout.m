@@ -527,9 +527,14 @@ static void YGApplyLayoutToViewHierarchy(UIView* view, BOOL preserveOrigin) {
 //      .y = YGNodeLayoutGetTop(node)
 //  } : CGPointZero;
 
-    const CGPoint topLeft = {
-        YGNodeLayoutGetLeft(node),
-        YGNodeLayoutGetTop(node),
+//    const CGPoint topLeft = {
+//        YGNodeLayoutGetLeft(node),
+//        YGNodeLayoutGetTop(node),
+//    };
+    
+    const CGPoint topLeft = (CGPoint) {
+        .x = YGNodeLayoutGetLeft(node),
+        .y = YGNodeLayoutGetTop(node)
     };
 
   const CGPoint bottomRight = {
