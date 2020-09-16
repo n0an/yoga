@@ -5,10 +5,23 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+#import <TargetConditionals.h>
+#if TARGET_OS_OSX
+#import <AppKit/AppKit.h>
+#define UIView NSView
+#else
 #import <UIKit/UIKit.h>
+#endif
+
 #import <yoga/YGEnums.h>
 #import <yoga/YGMacros.h>
 #import <yoga/Yoga.h>
+
+NS_ASSUME_NONNULL_BEGIN
+
+@class YGLayout;
+
+typedef void (^YGLayoutConfigurationBlock)(YGLayout* layout);
 
 YG_EXTERN_C_BEGIN
 
@@ -171,4 +184,15 @@ typedef NS_OPTIONS(NSInteger, YGDimensionFlexibility) {
  */
 - (void)markDirty;
 
+/**
+ In ObjC land, every time you access `view.yoga.*` you are adding another
+ `objc_msgSend` to your code. If you plan on making multiple changes to
+ YGLayout, it's more performant to use this method, which uses a single
+ objc_msgSend call.
+ */
+- (void)configureLayoutWithBlock:(NS_NOESCAPE YGLayoutConfigurationBlock)block
+    NS_SWIFT_NAME(configureLayout(block:));
+
 @end
+
+NS_ASSUME_NONNULL_END

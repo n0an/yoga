@@ -14,7 +14,7 @@ final class SingleLabelCollectionCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        contentView.configureLayout { (layout) in
+        contentView.yoga.configureLayout { (layout) in
             layout.isEnabled = true
             layout.flexDirection = .column
             layout.justifyContent = .flexEnd
@@ -27,7 +27,7 @@ final class SingleLabelCollectionCell: UICollectionViewCell {
 
         let border = UIView(frame: .zero)
         border.backgroundColor = .lightGray
-        border.configureLayout { (layout) in
+        border.yoga.configureLayout { (layout) in
             layout.isEnabled = true
             layout.height = 0.5
             layout.marginHorizontal = 25
@@ -42,7 +42,6 @@ final class SingleLabelCollectionCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        contentView.yoga.applyLayout(preservingOrigin: false)
         label.frame = contentView.bounds
     }
 }

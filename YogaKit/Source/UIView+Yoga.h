@@ -5,12 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-#import <UIKit/UIKit.h>
 #import "YGLayout.h"
 
 NS_ASSUME_NONNULL_BEGIN
-
-typedef void (^YGLayoutConfigurationBlock)(YGLayout* layout);
 
 @interface UIView (Yoga)
 
@@ -29,8 +26,13 @@ typedef void (^YGLayoutConfigurationBlock)(YGLayout* layout);
  YGLayout, it's more performant to use this method, which uses a single
  objc_msgSend call.
  */
-- (void)configureLayoutWithBlock:(YGLayoutConfigurationBlock)block
+- (void)configureLayoutWithBlock:(NS_NOESCAPE YGLayoutConfigurationBlock)block
     NS_SWIFT_NAME(configureLayout(block:));
+
+@end
+
+
+@interface UIView (YogaKitAutoApplyLayout)
 
 @end
 

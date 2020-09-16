@@ -16,7 +16,7 @@ final class LayoutInclusionViewController: UIViewController {
     override func viewDidLoad() {
         let root = self.view!
         root.backgroundColor = .white
-        root.configureLayout { (layout) in
+        root.yoga.configureLayout { (layout) in
             layout.isEnabled = true
             layout.flexDirection = .column
             layout.justifyContent = .spaceAround
@@ -25,7 +25,7 @@ final class LayoutInclusionViewController: UIViewController {
         contentView.backgroundColor = .clear
         contentView.layer.borderColor = UIColor.lightGray.cgColor
         contentView.layer.borderWidth = 1.0
-        contentView.configureLayout { (layout) in
+        contentView.yoga.configureLayout { (layout) in
             layout.isEnabled = true
             layout.height = 300
             layout.width = YGValue(self.view.bounds.size.width)
@@ -37,7 +37,7 @@ final class LayoutInclusionViewController: UIViewController {
 
         let redView = UIView(frame: .zero)
         redView.backgroundColor = .red
-        redView.configureLayout { (layout) in
+        redView.yoga.configureLayout { (layout) in
             layout.isEnabled = true
             layout.flexGrow = 1
             layout.flexShrink = 1
@@ -45,28 +45,26 @@ final class LayoutInclusionViewController: UIViewController {
         contentView.addSubview(redView)
 
         disappearingView.backgroundColor = .blue
-        disappearingView.configureLayout { (layout) in
+        disappearingView.yoga.configureLayout { (layout) in
             layout.isEnabled = true
             layout.flexGrow = 1
         }
         contentView.addSubview(disappearingView)
 
-        button.setTitle("Add Blue View", for: UIControlState.selected)
-        button.setTitle("Remove Blue View", for: UIControlState.normal)
-        button.addTarget(self, action: #selector(buttonWasTapped), for: UIControlEvents.touchUpInside)
-        button.configureLayout { (layout) in
+        button.setTitle("Add Blue View", for: .selected)
+        button.setTitle("Remove Blue View", for: .normal)
+        button.addTarget(self, action: #selector(buttonWasTapped), for: UIControl.Event.touchUpInside)
+        button.yoga.configureLayout { (layout) in
             layout.isEnabled = true
             layout.height = 300
             layout.width = 300
             layout.alignSelf = .center
         }
         root.addSubview(button)
-
-        root.yoga.applyLayout(preservingOrigin: false)
     }
 
-    // MARK - UIButton Action
-    func buttonWasTapped() {
+    // MARK: - UIButton Action
+    @objc func buttonWasTapped() {
         button.isSelected = !button.isSelected
 
         button.isUserInteractionEnabled = false

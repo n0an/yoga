@@ -10,21 +10,18 @@ import YogaKit
 
 final class BasicViewController: UIViewController {
     override func viewDidLoad() {
-        let containerSize = self.view.bounds.size
 
         let root = self.view!
         root.backgroundColor = .white
-        root.configureLayout { (layout) in
+        root.yoga.configureLayout { (layout) in
             layout.isEnabled = true
-            layout.width = YGValue(containerSize.width)
-            layout.height = YGValue(containerSize.height)
             layout.alignItems = .center
             layout.justifyContent = .center
         }
 
         let child1 = UIView()
         child1.backgroundColor = .blue
-        child1.configureLayout { (layout) in
+        child1.yoga.configureLayout { (layout) in
             layout.isEnabled = true
             layout.width = 100
             layout.height = 10
@@ -32,22 +29,24 @@ final class BasicViewController: UIViewController {
         }
         root.addSubview(child1)
 
-        let child2 = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
+        let child2 = UIView()
         child2.backgroundColor = .green
-        child2.configureLayout { (layout) in
+        child2.yoga.configureLayout { (layout) in
             layout.isEnabled = true
             layout.alignSelf = .flexEnd
+            layout.width = 200
+            layout.height = 200
         }
         root.addSubview(child2)
 
-        let child3 = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        let child3 = UIView()
         child3.backgroundColor = .yellow
-        child3.configureLayout { (layout) in
+        child3.yoga.configureLayout { (layout) in
             layout.isEnabled = true
             layout.alignSelf = .flexStart
+            layout.width = 100
+            layout.height = 100
         }
         root.addSubview(child3)
-
-        root.yoga.applyLayout(preservingOrigin: true)
     }
 }
