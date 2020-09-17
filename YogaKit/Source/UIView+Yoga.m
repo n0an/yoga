@@ -114,12 +114,13 @@ static void YogaSwizzleInstanceMethod(Class cls, SEL originalSelector, SEL swizz
 #endif
 
 - (void)_yoga_applyLayout {
-  if (self.isYogaEnabled && self.yoga.isEnabled) {
+  YGLayout *yoga = self.yoga;
+  if (yoga.isEnabled && yoga.isIncludedInLayout) {
     CGSize size = self.bounds.size;
     CGSize prev = self._yoga_boundsSize;
     if (!CGSizeEqualToSize(size, prev)) {
       self._yoga_boundsSize = size;
-        [self.yoga applyLayoutPreservingOrigin:YES];
+      [yoga applyLayoutPreservingOrigin:YES];
     }
   }
 }
